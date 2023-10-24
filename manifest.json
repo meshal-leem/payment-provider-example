@@ -1,7 +1,7 @@
 {
   "name": "sandbox-checkout.com-sample",
-  "vendor": "vtex",
-  "version": "1.2.0",
+  "vendor": "leemqa",
+  "version": "0.0.1",
   "title": "Payment Provider Example",
   "description": "Reference app for Payment-Provider protocol implementers",
   "builders": {
