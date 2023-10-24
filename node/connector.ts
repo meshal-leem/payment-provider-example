@@ -12,43 +12,38 @@ import {
   SettlementResponse,
   Settlements,
 } from '@vtex/payment-provider'
-import { VBase } from '@vtex/api'
+// import { VBase } from '@vtex/api'
 
 import { randomString } from './utils'
-import { executeAuthorization } from './flow'
+// import { executeAuthorization } from './flow'
 
-const authorizationsBucket = 'authorizations'
-const persistAuthorizationResponse = async (
-  vbase: VBase,
-  resp: AuthorizationResponse
-) => vbase.saveJSON(authorizationsBucket, resp.paymentId, resp)
+// const authorizationsBucket = 'authorizations'
+// const persistAuthorizationResponse = async (
+//   vbase: VBase,
+//   resp: AuthorizationResponse
+// ) => vbase.saveJSON(authorizationsBucket, resp.paymentId, resp)
 
-const getPersistedAuthorizationResponse = async (
-  vbase: VBase,
-  req: AuthorizationRequest
-) =>
-  vbase.getJSON<AuthorizationResponse | undefined>(
-    authorizationsBucket,
-    req.paymentId,
-    true
-  )
+// const getPersistedAuthorizationResponse = async (
+//   vbase: VBase,
+//   req: AuthorizationRequest
+// ) =>
+//   vbase.getJSON<AuthorizationResponse | undefined>(
+//     authorizationsBucket,
+//     req.paymentId,
+//     true
+//   )
 
 export default class TestSuiteApprover extends PaymentProvider {
   // This class needs modifications to pass the test suit.
   // Refer to https://help.vtex.com/en/tutorial/payment-provider-protocol#4-testing
   // in order to learn about the protocol and make the according changes.
 
-  private async saveAndRetry(
-    req: AuthorizationRequest,
-    resp: AuthorizationResponse
-  ) {
-    await persistAuthorizationResponse(this.context.clients.vbase, resp)
-    this.callback(req, resp)
-  }
-
   public async authorize(
     authorization: AuthorizationRequest
   ): Promise<AuthorizationResponse> {
+    // console.log('====================================')
+    // console.log(authorization)
+    // console.log('====================================')
     return {
       paymentId: 'Done',
       status: 'approved',
