@@ -49,22 +49,10 @@ export default class TestSuiteApprover extends PaymentProvider {
   public async authorize(
     authorization: AuthorizationRequest
   ): Promise<AuthorizationResponse> {
-    if (this.isTestSuite) {
-      const persistedResponse = await getPersistedAuthorizationResponse(
-        this.context.clients.vbase,
-        authorization
-      )
-
-      if (persistedResponse !== undefined && persistedResponse !== null) {
-        return persistedResponse
-      }
-
-      return executeAuthorization(authorization, response =>
-        this.saveAndRetry(authorization, response)
-      )
-    }
-
-    throw new Error('Not implemented')
+    return {
+      paymentId: 'Done',
+      status: 'approved',
+    } as AuthorizationResponse
   }
 
   public async cancel(
