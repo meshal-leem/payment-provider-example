@@ -41,11 +41,13 @@ export default class TestSuiteApprover extends PaymentProvider {
   public async authorize(
     authorization: AuthorizationRequest
   ): Promise<AuthorizationResponse> {
+    const { paymentId } = authorization
+
     // console.log('====================================')
     // console.log(authorization)
     // console.log('====================================')
     return {
-      paymentId: 'Done',
+      paymentId,
       status: 'approved',
     } as AuthorizationResponse
   }
